@@ -1,13 +1,13 @@
 /**
  * 公共配置
  */
-const path = require('path');
-const webpack = require('webpack');
-const pkg = require('../package.json');
+const path = require('path')
+const webpack = require('webpack')
+const pkg = require('../package.json')
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
 
 function resolve(dir) {
-  return path.join(__dirname, '..', dir);
+  return path.join(__dirname, '..', dir)
 }
 
 module.exports = {
@@ -45,10 +45,10 @@ module.exports = {
             ],
           },
           postLoaders: {
-            html: 'babel-loader?sourceMap'
+            html: 'babel-loader?sourceMap',
           },
           sourceMap: true,
-        }
+        },
       },
       {
         test: /\.js$/,
@@ -72,8 +72,8 @@ module.exports = {
             options: {
               sourceMap: true,
             },
-          }
-        ]
+          },
+        ],
       },
       {
         test: /\.less$/,
@@ -96,7 +96,7 @@ module.exports = {
               sourceMap: true,
             },
           },
-        ]
+        ],
       },
       {
         test: /\.scss$/,
@@ -119,26 +119,26 @@ module.exports = {
               sourceMap: true,
             },
           },
-        ]
+        ],
       },
       {
         test: /\.(gif|jpg|png|woff|svg|eot|ttf)\??.*$/,
-        loader: 'url-loader?limit=8192'
-      }
-    ]
+        loader: 'url-loader?limit=8192',
+      },
+    ],
   },
   resolve: {
     extensions: ['.js', '.vue'],
     alias: {
       'vue': 'vue/dist/vue.esm.js',
-      '@': resolve('src')
-    }
+      '@': resolve('src'),
+    },
   },
   plugins: [
     new webpack.optimize.ModuleConcatenationPlugin(),
     new webpack.DefinePlugin({
-      'process.env.VERSION': `'${pkg.version}'`
+      'process.env.VERSION': `'${pkg.version}'`,
     }),
-    new VueLoaderPlugin()
-  ]
-};
+    new VueLoaderPlugin(),
+  ],
+}

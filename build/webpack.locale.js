@@ -1,15 +1,15 @@
-const path = require('path');
-const webpack = require('webpack');
-const readDir = require('fs').readdirSync;
-const files = readDir(path.join('../', 'src/locale/lang'));
+const path = require('path')
+const webpack = require('webpack')
+const readDir = require('fs').readdirSync
+const files = readDir(path.join('../', 'src/locale/lang'))
 
-const entry = {};
+const entry = {}
 files.forEach(file => {
-  const name = file.split('.')[0];
-  entry[name] = './src/locale/lang/' + file;
-});
+  const name = file.split('.')[0]
+  entry[name] = './src/locale/lang/' + file
+})
 
-process.env.NODE_ENV = 'production';
+process.env.NODE_ENV = 'production'
 
 module.exports = {
   devtool: 'source-map',
@@ -22,9 +22,9 @@ module.exports = {
         options: {
           sourceMap: true,
         },
-        exclude: /node_modules/
-      }
-    ]
+        exclude: /node_modules/,
+      },
+    ],
   },
   output: {
     path: path.resolve(__dirname, '../dist/locale'),
@@ -32,21 +32,21 @@ module.exports = {
     filename: '[name].js',
     library: 'iview/locale',
     libraryTarget: 'umd',
-    umdNamedDefine: true
+    umdNamedDefine: true,
   },
   externals: {
     vue: {
       root: 'Vue',
       commonjs: 'vue',
       commonjs2: 'vue',
-      amd: 'vue'
-    }
+      amd: 'vue',
+    },
   },
   plugins: [
     new webpack.DefinePlugin({
       'process.env': {
-        NODE_ENV: '"production"'
-      }
-    })
-  ]
-};
+        NODE_ENV: '"production"',
+      },
+    }),
+  ],
+}
